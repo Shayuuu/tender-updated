@@ -1,0 +1,226 @@
+/* Color Variables */
+.variations-page {
+  --variations-primary-accent: #4a22fa;
+  --variations-secondary-accent: #333333;
+  --variations-text: #d3d3d3;
+  --variations-heading: #ffffff;
+  --variations-bg: #1a1a1a;
+  --variations-bg-end: #111111;
+  --variations-border: 1px solid #333333;
+  --variations-btn-bg: #4a22fa;
+  --variations-btn-hover-bg: #5a32ff;
+  --variations-cancel-btn-bg: #ff4444;
+  --variations-cancel-btn-hover-bg: #ff5555;
+  --variations-input-bg: #2a2a2a;
+  --variations-card-bg: #252525;
+  --variations-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+/* Base Styles */
+.variations-page {
+  min-height: 100vh;
+  background: linear-gradient(to bottom, var(--variations-bg), var(--variations-bg-end));
+  color: var(--variations-text);
+  font-family: Arial, sans-serif;
+}
+
+.variations-main {
+  margin-left: 60px;
+  padding: 20px;
+}
+
+.variations-content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.variations-content h1 {
+  color: var(--variations-heading);
+  font-size: 24px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.variations-content h2 {
+  color: var(--variations-heading);
+  font-size: 20px;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+/* Variations Section */
+.variations-list-section {
+  margin-bottom: 20px;
+}
+
+.variations-list-container {
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.variations-list-header {
+  display: flex;
+  background: var(--variations-card-bg);
+  border: var(--variations-border);
+  padding: 8px 5px;
+  font-weight: 500;
+  color: var(--variations-heading);
+  border-radius: 5px 5px 0 0;
+  font-size: 13px;
+}
+
+.variations-list-column {
+  flex: 1;
+  padding: 2px 5px;
+  text-align: left;
+}
+
+.variations-list {
+  border-radius: 0 0 5px 5px;
+  overflow: hidden;
+  border: var(--variations-border);
+  border-top: none;
+}
+
+.variations-empty {
+  padding: 10px;
+  text-align: center;
+  background: var(--variations-input-bg);
+  color: var(--variations-text);
+  font-size: 13px;
+}
+
+.variations-card {
+  display: flex;
+  background: var(--variations-input-bg);
+  border-bottom: var(--variations-border);
+  padding: 8px 5px;
+  transition: background 0.3s ease;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.variations-card:hover {
+  background: #333333;
+}
+
+.variations-card:last-child {
+  border-bottom: none;
+}
+
+.variations-label-mobile {
+  display: none;
+  color: var(--variations-heading);
+  font-weight: 500;
+  margin-bottom: 3px;
+  font-size: 12px;
+}
+
+.variations-input {
+  padding: 5px;
+  border: var(--variations-border);
+  border-radius: 5px;
+  background: var(--variations-input-bg);
+  color: var(--variations-text);
+  font-size: 12px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.variations-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+  justify-content: center;
+}
+
+.variations-btn {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  color: var(--variations-heading);
+  font-size: 14px;
+  transition: background 0.3s ease;
+  min-width: 120px;
+  text-align: center;
+}
+
+.variations-btn:disabled {
+  background: #666666;
+  cursor: not-allowed;
+}
+
+.variations-add-btn,
+.variations-edit-btn,
+.variations-save-btn {
+  background: var(--variations-btn-bg);
+}
+
+.variations-add-btn:hover,
+.variations-edit-btn:hover,
+.variations-save-btn:hover {
+  background: var(--variations-btn-hover-bg);
+}
+
+.variations-cancel-btn {
+  background: var(--variations-cancel-btn-bg);
+}
+
+.variations-cancel-btn:hover {
+  background: var(--variations-cancel-btn-hover-bg);
+}
+
+@media (max-width: 768px) {
+  .variations-main {
+      margin-left: 0;
+      padding: 10px;
+  }
+
+  .variations-list-header {
+      display: none;
+  }
+
+  .variations-list {
+      border: none;
+  }
+
+  .variations-empty {
+      border: var(--variations-border);
+      border-radius: 5px;
+      margin-bottom: 8px;
+  }
+
+  .variations-card {
+      flex-direction: column;
+      padding: 10px;
+      border: var(--variations-border);
+      border-radius: 5px;
+      margin-bottom: 8px;
+  }
+
+  .variations-card:last-child {
+      margin-bottom: 0;
+      border-bottom: var(--variations-border);
+  }
+
+  .variations-list-column {
+      display: flex;
+      flex-direction: column;
+      padding: 3px 0;
+  }
+
+  .variations-label-mobile {
+      display: block;
+  }
+
+  .variations-actions {
+      flex-direction: column;
+      align-items: center;
+  }
+
+  .variations-btn {
+      width: 100%;
+      max-width: 200px;
+  }
+}

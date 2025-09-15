@@ -1,0 +1,321 @@
+/* Color Variables */
+.home-page {
+  --home-primary-accent: #4a22fa;
+  --home-secondary-accent: #333333;
+  --home-text: #d3d3d3;
+  --home-heading: #ffffff;
+  --home-bg: #000000;
+  --home-card-bg: #1a1a1a;
+  --home-border: 1px solid #333333;
+  --home-severity-low: #22bb33;
+  --home-severity-medium: #ffaa00;
+  --home-severity-high: #ff4444;
+}
+
+/* Resets and Base Styles */
+.home-page html,
+.home-page body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  width: 100%;
+  font-family: Arial, sans-serif;
+}
+
+.home-page * {
+  box-sizing: border-box;
+}
+
+/* Home Page Container */
+.home-page {
+  display: flex;
+  min-height: 100vh;
+  background: radial-gradient(circle at center, #121212 0%, var(--home-bg) 100%);
+  color: var(--home-text);
+}
+
+/* Main Content Area */
+.home-page .home-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px;
+  margin-left: 60px;
+}
+
+/* Title */
+.home-page .home-title {
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--home-heading);
+  text-align: center;
+  margin: 5px 0 30px 0;
+}
+
+/* Home Card */
+.home-page .home-card {
+  background: var(--home-card-bg);
+  border-radius: 15px;
+  padding: 30px;
+  width: 100%;
+  max-width: 800px;
+  box-shadow: 0 2px 4px rgba(255, 255, 255, 0.05);
+}
+
+/* Alerts Section */
+.home-page .alerts-section {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.home-page .alerts-title {
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--home-heading);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.home-page .alerts-icon {
+  font-size: 20px;
+  color: var(--home-primary-accent);
+}
+
+/* Alerts Table */
+.home-page .alerts-table {
+  background: var(--home-card-bg);
+  border-radius: 15px;
+  padding: 20px;
+  width: 100%;
+}
+
+.home-page .table-header {
+  display: flex;
+  padding: 8px 0;
+  margin-bottom: 2px;
+}
+
+.home-page .table-row {
+  display: flex;
+  padding: 8px 0;
+  background: var(--home-card-bg);
+  border-radius: 10px;
+  margin-bottom: 6px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.home-page .table-row:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+}
+
+.home-page .table-cell {
+  flex: 1 1 auto;
+  padding: 0 10px;
+  font-size: 14px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: left;
+  color: var(--home-text);
+  white-space: normal;
+  word-wrap: break-word;
+  text-align: left;
+}
+
+.home-page .table-header .table-cell {
+  font-weight: 700;
+  color: var(--home-heading);
+}
+
+.home-page .table-header .table-cell:nth-child(1),
+.home-page .table-row .table-cell:nth-child(1) {
+  flex: 0 0 50px;
+  min-width: 50px;
+}
+
+.home-page .table-header .table-cell:nth-child(2),
+.home-page .table-row .table-cell:nth-child(2) {
+  flex: 0 0 150px;
+  min-width: 150px;
+}
+
+.home-page .table-header .table-cell:nth-child(3),
+.home-page .table-row .table-cell:nth-child(3) {
+  flex: 0 0 350px;
+  min-width: 350px;
+}
+
+.home-page .table-header .table-cell:nth-child(4),
+.home-page .table-row .table-cell:nth-child(4) {
+  flex: 0 0 150px;
+  min-width: 150px;
+}
+
+.home-page .severity-badge {
+  display: inline-block;
+  padding: 5px 10px;
+  text-align: center;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--home-heading);
+  background: var(--home-card-bg);
+  border: 2px solid var(--home-primary-accent);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.home-page .severity-badge:hover {
+  transform: scale(1.1);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.4);
+}
+
+.home-page .severity-low {
+  border-color: var(--home-severity-low);
+}
+
+.home-page .severity-low:hover {
+  border-color: #3cff4f;
+}
+
+.home-page .severity-medium {
+  border-color: var(--home-severity-medium);
+}
+
+.home-page .severity-medium:hover {
+  border-color: #ffc107;
+}
+
+.home-page .severity-high {
+  border-color: var(--home-severity-high);
+}
+
+.home-page .severity-high:hover {
+  border-color: #ff6666;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .home-page .home-content {
+      margin-left: 50px;
+  }
+
+  .home-page .home-card {
+      max-width: 100%;
+  }
+
+  .home-page .alerts-table {
+      width: 100%;
+  }
+
+  .home-page .table-header,
+  .home-page .table-row {
+      padding: 6px 0;
+  }
+
+  .home-page .table-cell {
+      padding: 0 8px;
+      font-size: 12px;
+  }
+
+  .home-page .table-header .table-cell:nth-child(1),
+  .home-page .table-row .table-cell:nth-child(1) {
+      flex: 0 0 40px;
+      min-width: 40px;
+  }
+
+  .home-page .table-header .table-cell:nth-child(2),
+  .home-page .table-row .table-cell:nth-child(2) {
+      flex: 0 0 250px;
+      min-width: 250px;
+  }
+
+  .home-page .table-header .table-cell:nth-child(3),
+  .home-page .table-row .table-cell:nth-child(3) {
+      flex: 0 0 400px;
+      min-width: 400px;
+  }
+
+  .home-page .table-header .table-cell:nth-child(4),
+  .home-page .table-row .table-cell:nth-child(4) {
+      flex: 0 0 160px;
+      min-width: 160px;
+  }
+
+  .home-page .severity-badge {
+      font-size: 12px;
+      padding: 4px 8px;
+  }
+}
+
+@media (max-width: 600px) {
+  .home-page .home-content {
+      padding: 20px;
+      margin-left: 0;
+  }
+
+  .home-page .home-card {
+      width: 95%;
+      padding: 20px;
+  }
+
+  .home-page .home-title {
+      font-size: 28px;
+  }
+
+  .home-page .alerts-title {
+      font-size: 20px;
+  }
+
+  .home-page .alerts-icon {
+      font-size: 18px;
+  }
+
+  .home-page .alerts-table {
+      width: 100%;
+      padding: 15px;
+  }
+
+  .home-page .table-header,
+  .home-page .table-row {
+      padding: 5px 0;
+  }
+
+  .home-page .table-cell {
+      padding: 0 6px;
+      font-size: 11px;
+  }
+
+  .home-page .table-header .table-cell:nth-child(1),
+  .home-page .table-row .table-cell:nth-child(1) {
+      flex: 0 0 30px;
+      min-width: 30px;
+  }
+
+  .home-page .table-header .table-cell:nth-child(2),
+  .home-page .table-row .table-cell:nth-child(2) {
+      flex: 0 0 180px;
+      min-width: 180px;
+  }
+
+  .home-page .table-header .table-cell:nth-child(3),
+  .home-page .table-row .table-cell:nth-child(3) {
+      flex: 0 0 300px;
+      min-width: 300px;
+  }
+
+  .home-page .table-header .table-cell:nth-child(4),
+  .home-page .table-row .table-cell:nth-child(4) {
+      flex: 0 0 120px;
+      min-width: 120px;
+  }
+
+  .home-page .severity-badge {
+      font-size: 11px;
+      padding: 3px 6px;
+  }
+}

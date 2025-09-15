@@ -1,0 +1,47 @@
+/* Color Variables */
+.bidder-tasklist-page {
+    --tasklist-primary-accent: #4a22fa;
+    --tasklist-secondary-accent: #333333;
+    --tasklist-text: #d3d3d3;
+    --tasklist-heading: #ffffff;
+    --tasklist-bg: #1a1a1a;
+    --tasklist-bg-end: #111111;
+}
+
+/* Base Styles */
+.bidder-tasklist-page {
+    min-height: 100vh;
+    background: linear-gradient(to bottom, var(--tasklist-bg), var(--tasklist-bg-end));
+    color: var(--tasklist-text);
+    font-family: Arial, sans-serif;
+}
+
+.bidder-tasklist-main {
+    margin-left: 60px;
+    padding: 20px;
+}
+
+.bidder-tasklist-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.bidder-tasklist-page h1 {
+    color: var(--tasklist-heading);
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.bidder-tasklist-coming-soon {
+    text-align: center;
+    font-size: 16px;
+    color: var(--tasklist-text);
+}
+
+@media (max-width: 600px) {
+    .bidder-tasklist-main {
+        margin-left: 0;
+        padding: 10px;
+    }
+}

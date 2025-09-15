@@ -1,0 +1,370 @@
+/* Color Variables */
+.login-page {
+  --login-primary-accent: #4a22fa;
+  --login-secondary-accent: #333333;
+  --login-text: #d3d3d3;
+  --login-heading: #ffffff;
+  --login-bg: #000000;
+  --login-card-bg: #1a1a1a;
+  --login-border: 1px solid #333333;
+}
+
+/* Resets and Base Styles */
+.login-page html,
+.login-page body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  width: 100%;
+  font-family: Arial, sans-serif;
+}
+
+.login-page * {
+  box-sizing: border-box;
+}
+
+/* Login Page Container */
+.login-page {
+  position: relative;
+  display: flex;
+  min-height: 100vh;
+  background: radial-gradient(circle at center, #121212 0%, #000000 100%);
+  color: var(--login-text);
+}
+
+/* Company Logo (Top-Left) */
+.login-page .company-logo {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  max-width: 50px;
+  height: auto;
+}
+
+/* Main Content Area */
+.login-page .login-content {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+}
+
+/* Login Card */
+.login-page .login-card {
+  background: var(--login-card-bg);
+  border-radius: 15px;
+  padding: 30px;
+  width: 100%;
+  max-width: 500px;
+  box-shadow: 0 2px 4px rgba(255, 255, 255, 0.05);
+}
+
+/* Header with SVG and Title */
+.login-page .login-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.login-page .login-logo {
+  width: 48px;
+  height: 48px;
+  margin-bottom: 10px;
+}
+
+.login-page .login-title {
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--login-heading);
+  text-align: center;
+}
+
+/* Form Styles */
+.login-page .login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.login-page .form-field {
+  display: flex;
+  flex-direction: column;
+}
+
+.login-page .form-field label {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--login-heading);
+  margin-bottom: 8px;
+}
+
+.login-page .form-input {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--login-text);
+  color: var(--login-text);
+  font-size: 14px;
+  padding: 8px 0;
+  width: 100%;
+  transition: border-bottom-color 0.3s ease;
+}
+
+.login-page .form-input::placeholder {
+  color: #888888;
+}
+
+.login-page .form-input:focus {
+  outline: none;
+  border-bottom: 1px solid #ffffff;
+}
+
+/* Autofill Styles */
+.login-page .form-input:-webkit-autofill,
+.login-page .form-input:-webkit-autofill:hover,
+.login-page .form-input:-webkit-autofill:focus,
+.login-page .form-input:-webkit-autofill:active {
+  -webkit-text-fill-color: var(--login-text);
+  -webkit-box-shadow: 0 0 0 30px var(--login-card-bg) inset !important;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+.login-page .form-input:-webkit-autofill {
+  border-bottom: 1px solid var(--login-text);
+}
+
+.login-page .form-action-btn {
+  background: var(--login-primary-accent);
+  color: #ffffff;
+  border: none;
+  padding: 12px;
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.login-page .form-action-btn:hover {
+  background: var(--login-secondary-accent);
+  transform: translateY(-2px);
+}
+
+.login-page .btn-icon {
+  font-size: 14px;
+}
+
+/* Register Link */
+.login-page .register-link {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 14px;
+  color: var(--login-text);
+}
+
+.login-page .register-link-btn {
+  background: none;
+  border: none;
+  color: #ffffff;
+  font-size: 14px;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.login-page .register-link-btn:hover {
+  color: var(--login-text);
+}
+
+/* Modal Styles */
+.login-page .modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.login-page .modal-content {
+  background: var(--login-card-bg);
+  border-radius: 15px;
+  padding: 30px;
+  width: 90%;
+  max-width: 500px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 2px 4px rgba(255, 255, 255, 0.05);
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  position: relative;
+}
+
+.login-page .modal-content::-webkit-scrollbar {
+  display: none;
+}
+
+.login-page .modal-back-btn {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: none;
+  border: none;
+  color: var(--login-text);
+  font-size: 20px;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.login-page .modal-back-btn:hover {
+  color: #ffffff;
+}
+
+.login-page .modal-title {
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--login-heading);
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.login-page .modal-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.login-page .modal-field {
+  display: flex;
+  flex-direction: column;
+}
+
+.login-page .modal-field label {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--login-heading);
+  margin-bottom: 8px;
+}
+
+.login-page .modal-input {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--login-text);
+  color: var(--login-text);
+  font-size: 14px;
+  padding: 8px 0;
+  width: 100%;
+  transition: border-bottom-color 0.3s ease;
+}
+
+.login-page .modal-input::placeholder {
+  color: #888888;
+}
+
+.login-page .modal-input:focus {
+  outline: none;
+  border-bottom: 1px solid #ffffff;
+}
+
+/* Autofill Styles for Modal */
+.login-page .modal-input:-webkit-autofill,
+.login-page .modal-input:-webkit-autofill:hover,
+.login-page .modal-input:-webkit-autofill:focus,
+.login-page .modal-input:-webkit-autofill:active {
+  -webkit-text-fill-color: var(--login-text);
+  -webkit-box-shadow: 0 0 0 30px var(--login-card-bg) inset !important;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+.login-page .modal-input:-webkit-autofill {
+  border-bottom: 1px solid var(--login-text);
+}
+
+.login-page .modal-actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.login-page .modal-action-btn {
+  background: var(--login-primary-accent);
+  color: #ffffff;
+  border: none;
+  padding: 12px;
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.login-page .modal-action-btn:hover {
+  background: var(--login-secondary-accent);
+  transform: translateY(-2px);
+}
+
+/* Responsive Styles */
+@media (max-width: 600px) {
+  .login-page .login-content {
+    padding: 20px;
+  }
+
+  .login-page .company-logo {
+    max-width: 40px;
+    top: 10px;
+    left: 10px;
+  }
+
+  .login-page .login-card {
+    width: 95%;
+    padding: 20px;
+  }
+
+  .login-page .login-title {
+    font-size: 28px;
+  }
+
+  .login-page .login-logo {
+    width: 40px;
+    height: 40px;
+  }
+
+  .login-page .modal-title {
+    font-size: 20px;
+  }
+
+  .login-page .modal-content {
+    width: 95%;
+    padding: 20px;
+  }
+
+  .login-page .form-field,
+  .login-page .modal-field {
+    min-width: 100%;
+  }
+
+  .login-page .form-action-btn,
+  .login-page .modal-action-btn {
+    font-size: 13px;
+    padding: 10px;
+  }
+
+  .login-page .btn-icon {
+    font-size: 13px;
+  }
+
+  .login-page .modal-back-btn {
+    font-size: 18px;
+  }
+}

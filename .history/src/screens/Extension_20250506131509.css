@@ -1,0 +1,182 @@
+/* Color Variables */
+.extension-page {
+    --extension-primary-accent: #4a22fa;
+    --extension-secondary-accent: #333333;
+    --extension-text: #d3d3d3;
+    --extension-heading: #ffffff;
+    --extension-bg: #1a1a1a;
+    --extension-bg-end: #111111;
+    --extension-border: 1px solid #333333;
+    --extension-btn-bg: #4a22fa;
+    --extension-btn-hover-bg: #5a32ff;
+    --extension-cancel-btn-bg: #ff4444;
+    --extension-cancel-btn-hover-bg: #ff5555;
+    --extension-input-bg: #2a2a2a;
+    --extension-modal-bg: #222222;
+    --extension-table-header-bg: #2a2a2a;
+}
+
+/* Base Styles */
+.extension-page {
+    min-height: 100vh;
+    background: linear-gradient(to bottom, var(--extension-bg), var(--extension-bg-end));
+    color: var(--extension-text);
+    font-family: Arial, sans-serif;
+}
+
+.extension-main {
+    margin-left: 60px;
+    padding: 20px;
+}
+
+.extension-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.extension-coming-soon {
+    margin-left: 60px;
+    padding: 20px;
+    color: var(--extension-heading);
+    font-size: 18px;
+    text-align: center;
+}
+
+.extension-page h1 {
+    color: var(--extension-heading);
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.extension-btn {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    color: var(--extension-heading);
+    font-size: 14px;
+    transition: background 0.3s ease;
+}
+
+.extension-add-btn,
+.extension-add-confirm-btn {
+    background: var(--extension-btn-bg);
+    margin-bottom: 20px;
+}
+
+.extension-add-btn:hover,
+.extension-add-confirm-btn:hover {
+    background: var(--extension-btn-hover-bg);
+}
+
+.extension-cancel-btn {
+    background: var(--extension-cancel-btn-bg);
+}
+
+.extension-cancel-btn:hover {
+    background: var(--extension-cancel-btn-hover-bg);
+}
+
+.extension-table-container {
+    overflow-x: auto;
+}
+
+.extension-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--extension-input-bg);
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.extension-table th,
+.extension-table td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: var(--extension-border);
+}
+
+.extension-table th {
+    background: var(--extension-table-header-bg);
+    color: var(--extension-heading);
+    font-weight: 500;
+}
+
+.extension-table td {
+    color: var(--extension-text);
+}
+
+.extension-table tr:last-child td {
+    border-bottom: none;
+}
+
+.extension-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.extension-modal-content {
+    background: var(--extension-modal-bg);
+    padding: 20px;
+    border-radius: 5px;
+    max-width: 400px;
+    width: 90%;
+}
+
+.extension-modal-content h2 {
+    color: var(--extension-heading);
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+.extension-modal-field {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-bottom: 15px;
+}
+
+.extension-modal-field label {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--extension-heading);
+}
+
+.extension-modal-field input {
+    padding: 8px;
+    border: var(--extension-border);
+    border-radius: 5px;
+    background: var(--extension-input-bg);
+    color: var(--extension-text);
+    font-size: 14px;
+}
+
+.extension-modal-field input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(80%) sepia(10%) saturate(200%) hue-rotate(180deg) brightness(100%) contrast(90%);
+}
+
+.extension-modal-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+}
+
+@media (max-width: 768px) {
+    .extension-main {
+        margin-left: 0;
+        padding: 10px;
+    }
+
+    .extension-coming-soon {
+        margin-left: 0;
+    }
+}

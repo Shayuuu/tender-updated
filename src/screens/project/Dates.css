@@ -1,0 +1,222 @@
+/* Color Variables */
+.dates-page {
+  --dates-primary-accent: #4a22fa;
+  --dates-secondary-accent: #333333;
+  --dates-text: #d3d3d3;
+  --dates-heading: #ffffff;
+  --dates-bg: #1a1a1a;
+  --dates-bg-end: #111111;
+  --dates-border: 1px solid #333333;
+  --dates-btn-bg: #4a22fa;
+  --dates-btn-hover-bg: #5a32ff;
+  --dates-cancel-btn-bg: #ff4444;
+  --dates-cancel-btn-hover-bg: #ff5555;
+  --dates-input-bg: #2a2a2a;
+  --dates-card-bg: #252525;
+}
+
+/* Base Styles */
+.dates-page {
+  min-height: 100vh;
+  background: linear-gradient(to bottom, var(--dates-bg), var(--dates-bg-end));
+  color: var(--dates-text);
+  font-family: Arial, sans-serif;
+}
+
+.dates-main {
+  margin-left: 60px;
+  padding: 20px;
+}
+
+.dates-content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.dates-page h1 {
+  color: var(--dates-heading);
+  font-size: 24px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.dates-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 30px;
+  justify-content: center;
+}
+
+.dates-btn {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  color: var(--dates-heading);
+  font-size: 14px;
+  transition: background 0.3s ease;
+  min-width: 120px;
+  text-align: center;
+}
+
+.dates-btn:disabled {
+  background: #666666;
+  cursor: not-allowed;
+}
+
+.dates-add-btn,
+.dates-edit-btn,
+.dates-save-btn {
+  background: var(--dates-btn-bg);
+}
+
+.dates-add-btn:hover,
+.dates-edit-btn:hover,
+.dates-save-btn:hover {
+  background: var(--dates-btn-hover-bg);
+}
+
+.dates-cancel-btn {
+  background: var(--dates-cancel-btn-bg);
+}
+
+.dates-cancel-btn:hover {
+  background: var(--dates-cancel-btn-hover-bg);
+}
+
+.dates-list-container {
+  max-width: 600px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.dates-list-header {
+  display: flex;
+  background: var(--dates-card-bg);
+  border: var(--dates-border);
+  padding: 8px 5px;
+  font-weight: 500;
+  color: var(--dates-heading);
+  border-radius: 5px 5px 0 0;
+  font-size: 13px;
+}
+
+.dates-list-column {
+  flex: 1;
+  padding: 2px 5px;
+  text-align: left;
+}
+
+.dates-list {
+  border-radius: 0 0 5px 5px;
+  overflow: hidden;
+  border: var(--dates-border);
+  border-top: none;
+}
+
+.dates-empty {
+  padding: 10px;
+  text-align: center;
+  background: var(--dates-input-bg);
+  color: var(--dates-text);
+  font-size: 13px;
+}
+
+.dates-card {
+  display: flex;
+  background: var(--dates-input-bg);
+  border-bottom: var(--dates-border);
+  padding: 8px 5px;
+  transition: background 0.3s ease;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.dates-card:hover {
+  background: #333333;
+}
+
+.dates-card:last-child {
+  border-bottom: none;
+}
+
+.dates-label-mobile {
+  display: none;
+  color: var(--dates-heading);
+  font-weight: 500;
+  margin-bottom: 3px;
+  font-size: 12px;
+}
+
+.dates-input {
+  padding: 5px;
+  border: var(--dates-border);
+  border-radius: 5px;
+  background: var(--dates-input-bg);
+  color: var(--dates-text);
+  font-size: 12px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.dates-input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(80%) sepia(10%) saturate(200%) hue-rotate(180deg) brightness(100%) contrast(90%);
+}
+
+@media (max-width: 768px) {
+  .dates-main {
+      margin-left: 0;
+      padding: 10px;
+  }
+
+  .dates-actions {
+      flex-direction: column;
+      align-items: center;
+  }
+
+  .dates-btn {
+      width: 100%;
+      max-width: 200px;
+  }
+
+  .dates-list-container {
+      max-width: 100%;
+  }
+
+  .dates-list-header {
+      display: none;
+  }
+
+  .dates-list {
+      border: none;
+  }
+
+  .dates-empty {
+      border: var(--dates-border);
+      border-radius: 5px;
+      margin-bottom: 8px;
+  }
+
+  .dates-card {
+      flex-direction: column;
+      padding: 10px;
+      border: var(--dates-border);
+      border-radius: 5px;
+      margin-bottom: 8px;
+  }
+
+  .dates-card:last-child {
+      margin-bottom: 0;
+      border-bottom: var(--dates-border);
+  }
+
+  .dates-list-column {
+      display: flex;
+      flex-direction: column;
+      padding: 3px 0;
+  }
+
+  .dates-label-mobile {
+      display: block;
+  }
+}

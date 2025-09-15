@@ -1,0 +1,170 @@
+Tender System Website (Minimalistic & Dark Mode design)
+-> 1)Login Page - Login ID, Password , Login Button ,
+register Button to register a user.
+Minimalistic and good Design of Login Page
+
+-> 2)Homepage- after loggin in, user(Admin/Admin) is taken to the Homepage.
+the Homepage has Alerts section(Alerts regarding deadlines and important updates for the user) 
+
+-> 3)Sidebar- The homepage has a Sidebar Component 
+it consists of 
+1)Home
+2)Bidder Section
+3)Project Section
+4)Task Summary
+These are the Sidebar Components.
+
+-> 4)Bidder Section - It consists of a Table with following Columns with some examples 
+[No., Year, Status(Bidding Pending, Tender ID(2024_COFM_12345_I), Bidding Completed), TYPE OF TENDER(survey,civil), Name of Work(big names consisting of atleast 10 words), Project Value (In Cr.), Tender Documents Fee, Form of Tender Documents Fee(Online,Cash), EMD (In Cr.), Form of EMD(Online,Cash), Completion period(6 months, 12 months), Last Date of Submission(Date and Time), Department(Big names consisting of 5 to 6 words), Remarks]
+There is also a New Form Button to create a New Form , which opens up a modal with all these values and helps you create a new Form.
+Clicking on a form takes you to a new page called Form details
+5)Every entry has a Form details Tab tailored for it 
+6)In the Form Details tab, the Sidebar Elements change to 
+1)Home
+2)Bidder Section
+-a)Form Details
+-b)Extension Dates
+-c)Bidder Details
+-d)Milestone Tracker
+3)Project Section
+4)Task Summary
+In Sidebar, Subsection for the Bidder Section appears now , They disappear when the user goes to Home,Project Section,Task Summary. But stays when the user is browsing in Subsections of the Bidder Section itself.
+
+-> 5)Form Details - 
+it has Lots of Data and 2 buttons (Edit and Download)
+It consists of these data (They are editable when edit button is pressed)
+They are broken down into 2 columns (like a table but i dont want to see a table)
+first column -
+1)Unique Tender No - Text
+2)Tender ID - text&number
+3)Project Name - Text
+4)Department/Authority- Text
+5)Form of Tender Documents Fee - Dropdown (ONLINE / RTGS / DD / CASH)
+6)Form of EMD - Dropdown (BG / FDR / ONLINE / EBG)
+7)EMD BG/FDR Validity Date - Datepicker
+8)EMD BG/FDR Status - Dropdown(Returned Or Not) 
+9)Completion Period - text (6 months)
+10)Last Date of Submission - datepicker
+11)Bid Opening date - datepicker
+12)Physically Needed documents - text
+13)PFEPL JV Share - text(in %)
+14)No. of Bids Submitted - text
+15)Bids Submitted -dropdown (yes/no)
+16)Attachments - File Upload (Shows previews of uploaded files)
+second column-
+17)Type of Project- Dropdown(Civil/Survey)
+18)Cost of Work acc.to Tender- text
+19)Tender document Fee - Text
+20)EMD Amount - Text
+21)EMD BG/FDR No - Text
+22)EMD BG/FDR Issued in Favor of- Text
+23)EMD BG/FDR Status Date - datepicker
+24)EMD BG/FDR Due Date - datepicker
+25)Pre Bid Meeting Date - datepicker
+26)Physical Document Submission due date
+27)Self/JV Type - dropdown(Self/JV)
+28)Bid Submission Date - datepicker
+29)Total Expenses Incurred Against Bid - text
+30)Remarks - text
+31)Status - Dropdown (Live,Bidding pending,Bidded,Awarded) give colours for statuses.
+Now, the buttons 
+Edit Button will trigger all fields to be editable, text will become input boxes and dropdowns will become dropdowns , dates will become datepickers.
+the edit button is switched with save and cancel buttons when clicked . 
+The downnload button brings up a modal with all the Data Fields Names and a checkbox besides each of them. 
+it ask the user what data he wantsto download, the user and tick the data which is necessary. a Select all button if user wants everything
+a download button to down;load the data. The data should be downloaded in csv/excel format.
+
+-> Extension Dates - It will have a Table of all the extension dates for the Bid
+It will have a table with two columns (extension No., Date)
+It will also have a Add extension Date button to add new dates.
+
+change the date format to dd-mm-yyyy
+also give the day (monday , Tue , wtc.)
+in Shortform 
+Mon 06-05-2025
+the day should be printed automatic based on the date user provides 
+have equal column widths for boith columns
+also add a edit button along the other button to edit existing entries.
+
+-> Bidder Details - It will have two date showing data at the start and then a table with the Bidder details.
+the two dates are Technical Opening date, Financial Opening Date
+The table has columns [Bidder No, Bidder Name, Technically Qualified / Responsive(YES Or NO), Financial Bid Amount, Ranking (L1,L2..LN in descending order of Financial Bid Amount(should be automatic ) and also if clicked on this column name cell, the descending order becomes ascending ,user can switch ), Percentage above/below tender cost(+5%,-5%,etc)]
+It will also have an option to Add Bidder as well as Edit to edit existing entries and dates. Add bidder will create a new row with editable fields for user to enter information.
+
+-> Milestone Tracker - It has a task Table
+First column is task and second is Checkboxes
+the tasks are 
+BG Made
+FD Made
+TD Made
+Project Won
+they all have a checkbox besides it , it shows the user whether each task is  completed for that particular entry.
+
+->Project Section
+i ahve made a Projectdata.js in the data folder. give code for that too
+also all project files are bring stored in src/screens/project/Project.jsx like this instead of directly in screens like Bidder.
+It will have a similar table to Bidders 
+columns will be 
+no,Project no.,Name, of Work, Date of LOA/LOI, Date of Work Order/contract, Starting Date,Duration of Project,Completion Date as per Contract,Actual Date of Completion,Work Order/Value of Contract,Revised Work Order after variations,Remarks
+everything will be same , add new project button , search bar like the bidder table , also the pagination logic , the hgorizontal scrolling table etc.
+
+->Sidebar Changes - Change name of Bidder Tasklist to just Tasklist in the Sidebar . For Project Section , the subsections will be Forms,Completion Dates, Running Account, Expenses, Variations, Notes
+same way as the bidder logic , only appears when an entry in Project Section is opened
+
+->Project form page- It is a editable form page with fields such as 
+1. Sr No / Unique Project No (PFEPL Internal): Already in mockdata
+2. Date Of LOA / LOI: Datepicker (already in mockdata ) 
+3. Additional Security Deposit(ASD): Text
+4. ASD Actual Return Date: Datepicker
+5. ASD Planned Return Date: Datepicker
+6. PSD BG/FDR Actual Date: Datepicker
+7. ASD BG/FDR No: Text+Number
+8. Name Of Work: Text (already in mock data)
+9. Date Of Work Order: Datepicker (already in mockdata)
+10. Form Of ASD: Drop Down(BG / FDR / ONLINE)
+11. ASD BG/FDR Validity: Datepicker
+12. ASD BG/FDR Status : Drop Down(Returned Or Not)
+13. Performance Security Deposit(PSD): Text+Number
+14. PSD BG/FDR No: Text+Number
+15. ASD BG/FDR Issued In Favor Of: Text
+16. PSD BG/FDR Return Date: Datepicker
+17. Form Of PSD: Drop Down( BG / FDR / ONLINE)
+18. PSD BG / FDR Validity: Datepicker
+19. PSD BG / FDR Status: Drop Down(Returned Or Not)
+20. Starting Date Of Project: Datepicker (already in mockdata)
+21. Completion Date As Per Work Order: Datepicker (already in mockdata)
+22. Value Of Contract/Work Order: Input Box (Already in mock data)
+23. PSD BG/FDR Issued In Favor Of: Input Box
+24. PSD BG/FDR Return Date: Datepicker
+25. Duration Of Project: Months (already in mockdata)
+26. Actual Date Of Completion: Datepicker (ALready in mockdata)
+27. Date Of Amendment: Datepicker
+28. DLP End Date: Datepicker
+29. Remarks: Input Box (already in  Mockdata)
+30. Work Completion Certificate Taken: Drop Down (Yes/No)
+31. Work Order After Variation: Input Box (already in mockdata)
+32. Defects Liability Period (DLP): days/months (input box)
+33. Attachments (file Upload with preview)
+
+->Project Compltion Date- similar to extension date page of the Bidder section.
+two columns here are - Completion Date No. , Date
+
+->Project-Account page- Title would be Running Account Bill
+two sections :
+first one will have Cumulative Value of Bills(addition of all bill amounts), Balance Value of Contract(have some random realistic value),
+Revised Value from Variation-Cumulative Value of Bills = (have random value)
+Next secvtion will have RA (running account bill) one by one in cards format or something 
+for example RA1, It will have Date , Bill Amount, Cumulative Amount (sum of this entry plus previous entries, for first one it would just be the samer as bill amount ), Work Breakdown Structure
+now there will be RA1 , RA2, RA 3 etc in this section.
+also a Add RA button to add a new entry with those fields , and also a edit button to edit existing RA's. also for new forms , there would be no RA's and user can add new ones.
+
+the css for account is very bad , this is the theme and styles i want , i am giving you a css for reference
+
+->Project-Expenses page- SImilar to the Accounts page , here ,there is only one section with a table (the second section of account page)
+It has same columns as Accounts page too, but this page shows Expenses for the particular RA1, RA2 etc.
+
+->Project-Variations Page - It has a table with 3 columns 
+previous Value, Added Value, Upodated Value 
+the updated value for the previous column acts as the previous value for the next column and it goes on . below the table keep an Add Button and Edit Button.
+
+->Project-Notes page - It just has a big text box or inut box for the user to write any notes he want sa bou that project . there is save and Edit buttons too like all the other pages . also keep a file upload option if user wants to upoload any document or notepad file. style it like we did for all other pages.

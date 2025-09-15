@@ -1,0 +1,334 @@
+import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import projectData from '../../data/Projectdata';
+import Sidebar from '../Sidebar';
+import './Expenses.css';
+
+const Expenses = () => {
+  const { id } = useParams();
+  const [expensesData, setExpensesData] = useState([]);
+  const [raBills, setRaBills] = useState([]);
+  const [isAdding, setIsAdding] = useState(false);
+  const [isEditing, setIsEditing] = useState(false);
+  const [newExpense, setNewExpense] = useState({ raNumber: '', date: '', billAmount: '', workBreakdownStructure: '' });
+  const [editExpenses, setEditExpenses] = useState([]);
+
+  useEffect(() => {
+    // Load data from projectData or localStorage, prioritizing localData for specific fields
+    const localData = JSON.parse(localStorage.getItem('customProjectData')) || [];
+    const localProject = localData.find((p) => p.id === parseInt(id));
+    const project = projectData.find((p) => p.id === parseInt(id));
+
+    // Merge projectData with localData, but handle each field carefully
+    const mergedData = {
+      id: parseInt(id),
+      forms: localProject?.forms || project?.forms || {},
+      dates: localProject?.dates || project?.dates || [],
+      account: localProject?.account || project?.account || {},
+      expenses: Array.isArray(localProject?.expenses) && localProject.expenses.length > 0 
+        ? localProject.expenses 
+        : (project?.expenses || []),
+      variations: localProject?.variations || project?.variations || [],
+      notes: localProject?.notes || project?.notes || ""
+    };
+
+    // Initialize expensesData and raBills
+    setExpensesData(Array.isArray(mergedData.expenses) ? mergedData.expenses : []);
+    setRaBills(mergedData.account && Array.isArray(mergedData.account.bills) ? mergedData.account.bills.map(bill => bill.raNumber) : []);
+  }, [id]);
+
+  const formatDate = (dateString) => {
+    if (!dateString) return '';
+    const date = new Date(dateString);
+    const dd = String(date.getDate()).padStart(2, '0');
+    const mm = String(date.getMonth() + 1).padStart(2, '0');
+    const yyyy = date.getFullYear();
+    return `${dd}-${mm}-${yyyy}`;
+  };
+
+  const calculateCumulativeAmount = (expenses, raNumber, currentIndex) => {
+    const relevantExpenses = expenses.filter((exp, idx) => exp.raNumber === raNumber && idx <= currentIndex);
+    return relevantExpenses.reduce((sum, exp) => {
+      const amount = parseFloat(exp.billAmount.replace(/[^0-9.-]+/g, '')) || 0;
+      return sum + amount;
+    }, 0).toLocaleString('en-IN', { style: 'currency', currency: 'INR' });
+  };
+
+  const handleAddToggle = () => {
+    setIsAdding(true);
+    setIsEditing(false);
+    setEditExpenses([]);
+    setNewExpense({ raNumber: raBills[0] || '', date: '', billAmount: '', workBreakdownStructure: '' });
+  };
+
+  const handleEditToggle = () => {
+    setIsEditing(true);
+    setIsAdding(false);
+    setNewExpense({ raNumber: '', date: '', billAmount: '', workBreakdownStructure: '' });
+    setEditExpenses(expensesData.map(exp => ({ ...exp })));
+  };
+
+  const handleNewExpenseChange = (e, field) => {
+    setNewExpense({ ...newExpense, [field]: e.target.value });
+  };
+
+  const handleEditExpenseChange = (index, field, value) => {
+    const updatedEditExpenses = [...editExpenses];
+    updatedEditExpenses[index] = { ...updatedEditExpenses[index], [field]: value };
+    setEditExpenses(updatedEditExpenses);
+  };
+
+  const handleSave = () => {
+    let updatedExpenses = [...expensesData];
+
+    if (isAdding) {
+      if (newExpense.raNumber && newExpense.date && newExpense.billAmount && newExpense.workBreakdownStructure) {
+        const newExp = {
+          raNumber: newExpense.raNumber,
+          date: newExpense.date,
+          billAmount: `₹${parseFloat(newExpense.billAmount).toLocaleString('en-IN')}`,
+          workBreakdownStructure: newExpense.workBreakdownStructure
+        };
+        updatedExpenses.push(newExp);
+      }
+    } else if (isEditing) {
+      updatedExpenses = editExpenses.map(exp => ({
+        ...exp,
+        billAmount: `₹${parseFloat(exp.billAmount.replace(/[^0-9.-]+/g, '') || 0).toLocaleString('en-IN')}`
+      }));
+    }
+
+    // Recalculate cumulative amounts for each expense
+    updatedExpenses = updatedExpenses.map((exp, index) => ({
+      ...exp,
+      cumulativeAmount: calculateCumulativeAmount(updatedExpenses, exp.raNumber, index)
+    }));
+
+    // Save to localStorage
+    const localData = JSON.parse(localStorage.getItem('customProjectData')) || [];
+    const projectIndex = localData.findIndex((p) => p.id === parseInt(id));
+    const project = projectData.find((p) => p.id === parseInt(id));
+    const existingLocalProject = localData[projectIndex] || {};
+
+    const updatedProject = {
+      id: parseInt(id),
+      forms: existingLocalProject.forms || project?.forms || {},
+      dates: existingLocalProject.dates || project?.dates || [],
+      account: existingLocalProject.account || project?.account || {},
+      expenses: updatedExpenses,
+      variations: existingLocalProject.variations || project?.variations || [],
+      notes: existingLocalProject.notes || project?.notes || ""
+    };
+
+    if (projectIndex !== -1) {
+      localData[projectIndex] = updatedProject;
+    } else {
+      localData.push(updatedProject);
+    }
+    localStorage.setItem('customProjectData', JSON.stringify(localData));
+
+    setExpensesData(updatedExpenses);
+    setIsAdding(false);
+    setIsEditing(false);
+    setNewExpense({ raNumber: '', date: '', billAmount: '', workBreakdownStructure: '' });
+    setEditExpenses([]);
+  };
+
+  const handleCancel = () => {
+    setIsAdding(false);
+    setIsEditing(false);
+    setNewExpense({ raNumber: '', date: '', billAmount: '', workBreakdownStructure: '' });
+    setEditExpenses([]);
+  };
+
+  return (
+    <div className="expenses-page">
+      <Sidebar />
+      <div className="expenses-main">
+        <div className="expenses-content">
+          <h1>Project Expenses</h1>
+
+          {/* Expenses Section */}
+          <div className="expenses-list-section">
+            <h2>Expenses</h2>
+            <div className="expenses-list-container">
+              <div className="expenses-list-header">
+                <div className="expenses-list-column">RA Number</div>
+                <div className="expenses-list-column">Date</div>
+                <div className="expenses-list-column">Bill Amount</div>
+                <div className="expenses-list-column">Cumulative Amount</div>
+                <div className="expenses-list-column">Work Breakdown Structure</div>
+              </div>
+              <div className="expenses-list">
+                {expensesData.length === 0 && !isAdding && (
+                  <div className="expenses-empty">
+                    No expenses available.
+                  </div>
+                )}
+                {expensesData.map((expense, index) => (
+                  <div key={`${expense.raNumber}-${index}`} className="expenses-card">
+                    <div className="expenses-list-column">
+                      <span className="expenses-label-mobile">RA Number:</span>
+                      {isEditing ? (
+                        <select
+                          value={editExpenses[index]?.raNumber || ''}
+                          onChange={(e) => handleEditExpenseChange(index, 'raNumber', e.target.value)}
+                          className="expenses-input"
+                        >
+                          {raBills.map((ra) => (
+                            <option key={ra} value={ra}>{ra}</option>
+                          ))}
+                        </select>
+                      ) : (
+                        expense.raNumber
+                      )}
+                    </div>
+                    <div className="expenses-list-column">
+                      <span className="expenses-label-mobile">Date:</span>
+                      {isEditing ? (
+                        <input
+                          type="date"
+                          value={editExpenses[index]?.date || ''}
+                          onChange={(e) => handleEditExpenseChange(index, 'date', e.target.value)}
+                          className="expenses-input"
+                        />
+                      ) : (
+                        formatDate(expense.date)
+                      )}
+                    </div>
+                    <div className="expenses-list-column">
+                      <span className="expenses-label-mobile">Bill Amount:</span>
+                      {isEditing ? (
+                        <input
+                          type="number"
+                          value={(editExpenses[index]?.billAmount || '').replace(/[^0-9.-]+/g, '')}
+                          onChange={(e) => handleEditExpenseChange(index, 'billAmount', e.target.value)}
+                          className="expenses-input"
+                          placeholder="Enter bill amount"
+                        />
+                      ) : (
+                        expense.billAmount
+                      )}
+                    </div>
+                    <div className="expenses-list-column">
+                      <span className="expenses-label-mobile">Cumulative Amount:</span>
+                      {expense.cumulativeAmount || calculateCumulativeAmount(expensesData, expense.raNumber, index)}
+                    </div>
+                    <div className="expenses-list-column">
+                      <span className="expenses-label-mobile">Work Breakdown Structure:</span>
+                      {isEditing ? (
+                        <input
+                          type="text"
+                          value={editExpenses[index]?.workBreakdownStructure || ''}
+                          onChange={(e) => handleEditExpenseChange(index, 'workBreakdownStructure', e.target.value)}
+                          className="expenses-input"
+                          placeholder="Enter work breakdown structure"
+                        />
+                      ) : (
+                        expense.workBreakdownStructure
+                      )}
+                    </div>
+                  </div>
+                ))}
+                {isAdding && (
+                  <div className="expenses-card">
+                    <div className="expenses-list-column">
+                      <span className="expenses-label-mobile">RA Number:</span>
+                      <select
+                        value={newExpense.raNumber}
+                        onChange={(e) => handleNewExpenseChange(e, 'raNumber')}
+                        className="expenses-input"
+                      >
+                        {raBills.map((ra) => (
+                          <option key={ra} value={ra}>{ra}</option>
+                        ))}
+                      </select>
+                    </div>
+                    <div className="expenses-list-column">
+                      <span className="expenses-label-mobile">Date:</span>
+                      <input
+                        type="date"
+                        value={newExpense.date}
+                        onChange={(e) => handleNewExpenseChange(e, 'date')}
+                        className="expenses-input"
+                      />
+                    </div>
+                    <div className="expenses-list-column">
+                      <span className="expenses-label-mobile">Bill Amount:</span>
+                      <input
+                        type="number"
+                        value={newExpense.billAmount}
+                        onChange={(e) => handleNewExpenseChange(e, 'billAmount')}
+                        className="expenses-input"
+                        placeholder="Enter bill amount"
+                      />
+                    </div>
+                    <div className="expenses-list-column">
+                      <span className="expenses-label-mobile">Cumulative Amount:</span>
+                      {(() => {
+                        const previousExpenses = expensesData.filter(exp => exp.raNumber === newExpense.raNumber);
+                        const amount = parseFloat(newExpense.billAmount) || 0;
+                        const total = previousExpenses.reduce((sum, exp) => {
+                          const expAmount = parseFloat(exp.billAmount.replace(/[^0-9.-]+/g, '')) || 0;
+                          return sum + expAmount;
+                        }, 0) + amount;
+                        return `₹${total.toLocaleString('en-IN')}`;
+                      })()}
+                    </div>
+                    <div className="expenses-list-column">
+                      <span className="expenses-label-mobile">Work Breakdown Structure:</span>
+                      <input
+                        type="text"
+                        value={newExpense.workBreakdownStructure}
+                        onChange={(e) => handleNewExpenseChange(e, 'workBreakdownStructure')}
+                        className="expenses-input"
+                        placeholder="Enter work breakdown structure"
+                      />
+                    </div>
+                  </div>
+                )}
+              </div>
+            </div>
+            <div className="expenses-actions">
+              {!(isAdding || isEditing) ? (
+                <>
+                  <button
+                    className="expenses-btn expenses-add-btn"
+                    onClick={handleAddToggle}
+                    disabled={raBills.length === 0}
+                  >
+                    Add Expense
+                  </button>
+                  <button
+                    className="expenses-btn expenses-edit-btn"
+                    onClick={handleEditToggle}
+                    disabled={expensesData.length === 0}
+                  >
+                    Edit
+                  </button>
+                </>
+              ) : (
+                <>
+                  <button
+                    className="expenses-btn expenses-save-btn"
+                    onClick={handleSave}
+                  >
+                    Save
+                  </button>
+                  <button
+                    className="expenses-btn expenses-cancel-btn"
+                    onClick={handleCancel}
+                  >
+                    Cancel
+                  </button>
+                </>
+              )}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Expenses;

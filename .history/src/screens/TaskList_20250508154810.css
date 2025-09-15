@@ -1,0 +1,225 @@
+/* Color Variables */
+.tasklist-page {
+    --tasklist-primary-accent: #4a22fa;
+    --tasklist-secondary-accent: #333333;
+    --tasklist-text: #d3d3d3;
+    --tasklist-heading: #ffffff;
+    --tasklist-bg: #000000;
+    --tasklist-bg-end: #111111;
+    --tasklist-border: 1px solid #333333;
+    --tasklist-btn-bg: #4a22fa;
+    --tasklist-btn-hover-bg: #5a32ff;
+    --tasklist-input-bg: #2a2a2a;
+    --tasklist-table-header-bg: #252525;
+    --tasklist-table-row-hover: #333333;
+    --tasklist-priority-high: #ff4444;
+    --tasklist-priority-medium: #ffbb33;
+    --tasklist-priority-low: #00C851;
+    --tasklist-tab-bg: #252525;
+    --tasklist-tab-active-bg: #4a22fa;
+}
+
+/* Base Styles */
+.tasklist-page {
+    min-height: 100vh;
+    background: radial-gradient(circle at center, #121212 0%, var(--tasklist-bg) 100%);
+    color: var(--tasklist-text);
+    font-family: Arial, sans-serif;
+}
+
+.tasklist-main {
+    margin-left: 60px;
+    padding: 20px;
+}
+
+.tasklist-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.tasklist-page h1 {
+    color: var(--tasklist-heading);
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Header and Tabs */
+.tasklist-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.tasklist-tabs {
+    display: flex;
+    gap: 0;
+    background: var(--tasklist-tab-bg);
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.tasklist-tab {
+    padding: 10px 20px;
+    border: none;
+    background: var(--tasklist-tab-bg);
+    color: var(--tasklist-text);
+    font-size: 14px;
+    cursor: pointer;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+.tasklist-tab:hover {
+    background: var(--tasklist-secondary-accent);
+}
+
+.tasklist-tab.active {
+    background: var(--tasklist-tab-active-bg);
+    color: var(--tasklist-heading);
+    font-weight: 500;
+}
+
+/* Task Summary Button */
+.tasklist-btn {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    color: var(--tasklist-heading);
+    font-size: 14px;
+    transition: background 0.3s ease;
+    min-width: 120px;
+    text-align: center;
+}
+
+.tasklist-summary-btn {
+    background: var(--tasklist-btn-bg);
+}
+
+.tasklist-summary-btn:hover {
+    background: var(--tasklist-btn-hover-bg);
+}
+
+/* Table Styles */
+.tasklist-table-container {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.tasklist-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--tasklist-input-bg);
+    border: var(--tasklist-border);
+    border-radius: 5px;
+    font-size: 13px;
+}
+
+.tasklist-table th,
+.tasklist-table td {
+    padding: 10px 12px;
+    text-align: left;
+    border-bottom: var(--tasklist-border);
+}
+
+.tasklist-table th {
+    background: var(--tasklist-table-header-bg);
+    color: var(--tasklist-heading);
+    font-weight: 500;
+}
+
+.tasklist-table td {
+    color: var(--tasklist-text);
+}
+
+.tasklist-table tr:hover {
+    background: var(--tasklist-table-row-hover);
+}
+
+.tasklist-table tr:last-child td {
+    border-bottom: none;
+}
+
+/* Priority Styling */
+.priority-label {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.priority-high {
+    color: var(--tasklist-priority-high);
+    border: 1px solid var(--tasklist-priority-high);
+}
+
+.priority-medium {
+    color: var(--tasklist-priority-medium);
+    border: 1px solid var(--tasklist-priority-medium);
+}
+
+.priority-low {
+    color: var(--tasklist-priority-low);
+    border: 1px solid var(--tasklist-priority-low);
+}
+
+/* Empty State */
+.tasklist-empty {
+    text-align: center;
+    padding: 20px;
+    background: var(--tasklist-input-bg);
+    border: var(--tasklist-border);
+    border-radius: 5px;
+    font-size: 14px;
+    color: var(--tasklist-text);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .tasklist-main {
+        margin-left: 0;
+        padding: 10px;
+    }
+
+    .tasklist-header {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .tasklist-page h1 {
+        font-size: 20px;
+    }
+
+    .tasklist-tabs {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .tasklist-tab {
+        flex: 1;
+        text-align: center;
+        padding: 8px 10px;
+        font-size: 13px;
+    }
+
+    .tasklist-summary-btn {
+        width: 100%;
+        max-width: 200px;
+    }
+
+    .tasklist-table th,
+    .tasklist-table td {
+        padding: 8px 10px;
+        font-size: 12px;
+    }
+
+    .tasklist-table .priority-label {
+        padding: 2px 6px;
+        font-size: 11px;
+    }
+}

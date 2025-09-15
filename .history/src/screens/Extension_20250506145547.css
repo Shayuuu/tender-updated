@@ -1,0 +1,214 @@
+/* Color Variables */
+.extension-page {
+    --extension-primary-accent: #4a22fa;
+    --extension-secondary-accent: #333333;
+    --extension-text: #d3d3d3;
+    --extension-heading: #ffffff;
+    --extension-bg: #1a1a1a;
+    --extension-bg-end: #111111;
+    --extension-border: 1px solid #333333;
+    --extension-btn-bg: #4a22fa;
+    --extension-btn-hover-bg: #5a32ff;
+    --extension-cancel-btn-bg: #ff4444;
+    --extension-cancel-btn-hover-bg: #ff5555;
+    --extension-input-bg: #2a2a2a;
+    --extension-card-bg: #252525;
+}
+
+/* Base Styles */
+.extension-page {
+    min-height: 100vh;
+    background: linear-gradient(to bottom, var(--extension-bg), var(--extension-bg-end));
+    color: var(--extension-text);
+    font-family: Arial, sans-serif;
+}
+
+.extension-main {
+    margin-left: 60px;
+    padding: 20px;
+}
+
+.extension-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.extension-coming-soon {
+    margin-left: 60px;
+    padding: 20px;
+    color: var(--extension-heading);
+    font-size: 18px;
+    text-align: center;
+}
+
+.extension-page h1 {
+    color: var(--extension-heading);
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.extension-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 30px;
+    justify-content: center;
+}
+
+.extension-btn {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    color: var(--extension-heading);
+    font-size: 14px;
+    transition: background 0.3s ease;
+    min-width: 120px;
+    text-align: center;
+}
+
+.extension-btn:disabled {
+    background: #666666;
+    cursor: not-allowed;
+}
+
+.extension-add-btn,
+.extension-edit-btn,
+.extension-save-btn {
+    background: var(--extension-btn-bg);
+}
+
+.extension-add-btn:hover,
+.extension-edit-btn:hover,
+.extension-save-btn:hover {
+    background: var(--extension-btn-hover-bg);
+}
+
+.extension-cancel-btn {
+    background: var(--extension-cancel-btn-bg);
+}
+
+.extension-cancel-btn:hover {
+    background: var(--extension-cancel-btn-hover-bg);
+}
+
+.extension-list-container {
+    max-width: 600px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.extension-list-header {
+    display: flex;
+    background: var(--extension-card-bg);
+    border-bottom: var(--extension-border);
+    padding: 8px 5px;
+    font-weight: 500;
+    color: var(--extension-heading);
+    border-radius: 5px 5px 0 0;
+    font-size: 13px;
+}
+
+.extension-list-column {
+    flex: 1;
+    padding: 2px 5px;
+    text-align: left;
+}
+
+.extension-list {
+    border-radius: 0 0 5px 5px;
+    overflow: hidden;
+}
+
+.extension-card {
+    display: flex;
+    background: var(--extension-input-bg);
+    border-bottom: var(--extension-border);
+    padding: 8px 5px;
+    transition: background 0.3s ease;
+    font-size: 13px;
+    line-height: 1.4;
+}
+
+.extension-card:hover {
+    background: #333333;
+}
+
+.extension-card:last-child {
+    border-bottom: none;
+}
+
+.extension-label-mobile {
+    display: none;
+    color: var(--extension-heading);
+    font-weight: 500;
+    margin-bottom: 3px;
+    font-size: 12px;
+}
+
+.extension-input {
+    padding: 5px;
+    border: var(--extension-border);
+    border-radius: 5px;
+    background: var(--extension-input-bg);
+    color: var(--extension-text);
+    font-size: 12px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.extension-input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(80%) sepia(10%) saturate(200%) hue-rotate(180deg) brightness(100%) contrast(90%);
+}
+
+@media (max-width: 768px) {
+    .extension-main {
+        margin-left: 0;
+        padding: 10px;
+    }
+
+    .extension-coming-soon {
+        margin-left: 0;
+    }
+
+    .extension-actions {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .extension-btn {
+        width: 100%;
+        max-width: 200px;
+    }
+
+    .extension-list-container {
+        max-width: 100%;
+    }
+
+    .extension-list-header {
+        display: none;
+    }
+
+    .extension-card {
+        flex-direction: column;
+        padding: 10px;
+        border: var(--extension-border);
+        border-radius: 5px;
+        margin-bottom: 8px;
+    }
+
+    .extension-card:last-child {
+        margin-bottom: 0;
+        border-bottom: var(--extension-border);
+    }
+
+    .extension-list-column {
+        display: flex;
+        flex-direction: column;
+        padding: 3px 0;
+    }
+
+    .extension-label-mobile {
+        display: block;
+    }
+}

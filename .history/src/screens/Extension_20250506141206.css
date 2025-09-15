@@ -1,0 +1,192 @@
+/* Color Variables */
+.extension-page {
+    --extension-primary-accent: #4a22fa;
+    --extension-secondary-accent: #333333;
+    --extension-text: #d3d3d3;
+    --extension-heading: #ffffff;
+    --extension-bg: #1a1a1a;
+    --extension-bg-end: #111111;
+    --extension-border: 1px solid #333333;
+    --extension-btn-bg: #4a22fa;
+    --extension-btn-hover-bg: #5a32ff;
+    --extension-cancel-btn-bg: #ff4444;
+    --extension-cancel-btn-hover-bg: #ff5555;
+    --extension-input-bg: #2a2a2a;
+    --extension-table-header-bg: #2a2a2a;
+}
+
+/* Base Styles */
+.extension-page {
+    min-height: 100vh;
+    background: linear-gradient(to bottom, var(--extension-bg), var(--extension-bg-end));
+    color: var(--extension-text);
+    font-family: Arial, sans-serif;
+}
+
+.extension-main {
+    margin-left: 60px;
+    padding: 20px;
+}
+
+.extension-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.extension-coming-soon {
+    margin-left: 60px;
+    padding: 20px;
+    color: var(--extension-heading);
+    font-size: 18px;
+    text-align: center;
+}
+
+.extension-page h1 {
+    color: var(--extension-heading);
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.extension-actions {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    justify-content: center;
+}
+
+.extension-btn {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    color: var(--extension-heading);
+    font-size: 14px;
+    transition: background 0.3s ease;
+    min-width: 120px; /* Ensure consistent button width */
+    text-align: center;
+}
+
+.extension-btn:disabled {
+    background: #666666;
+    cursor: not-allowed;
+}
+
+.extension-add-btn,
+.extension-edit-btn,
+.extension-save-btn {
+    background: var(--extension-btn-bg);
+}
+
+.extension-add-btn:hover,
+.extension-edit-btn:hover,
+.extension-save-btn:hover {
+    background: var(--extension-btn-hover-bg);
+}
+
+.extension-cancel-btn {
+    background: var(--extension-cancel-btn-bg);
+}
+
+.extension-cancel-btn:hover {
+    background: var(--extension-cancel-btn-hover-bg);
+}
+
+.extension-table-container {
+    overflow-x: auto;
+}
+
+.extension-table {
+    max-width: 600px; /* Reduced width for better proportionality */
+    width: 100%;
+    margin: 0 auto; /* Center the table */
+    border-collapse: collapse;
+    background: var(--extension-input-bg);
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.extension-table th,
+.extension-table td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: var(--extension-border);
+}
+
+.extension-table th:nth-child(1),
+.extension-table td:nth-child(1) {
+    width: 50%; /* Equal width for Extension No. */
+}
+
+.extension-table th:nth-child(2),
+.extension-table td:nth-child(2) {
+    width: 50%; /* Equal width for Date */
+}
+
+.extension-table th {
+    background: var(--extension-table-header-bg);
+    color: var(--extension-heading);
+    font-weight: 500;
+}
+
+.extension-table td {
+    color: var(--extension-text);
+}
+
+.extension-table tr:last-child td {
+    border-bottom: none;
+}
+
+.extension-input {
+    padding: 8px;
+    border: var(--extension-border);
+    border-radius: 5px;
+    background: var(--extension-input-bg);
+    color: var(--extension-text);
+    font-size: 14px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.extension-input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(80%) sepia(10%) saturate(200%) hue-rotate(180deg) brightness(100%) contrast(90%);
+}
+
+.extension-edit-row-btn {
+    margin-left: 10px;
+    background: none;
+    border: none;
+    color: var(--extension-btn-bg);
+    cursor: pointer;
+    font-size: 14px;
+    text-decoration: underline;
+}
+
+.extension-edit-row-btn:hover {
+    color: var(--extension-btn-hover-bg);
+}
+
+@media (max-width: 768px) {
+    .extension-main {
+        margin-left: 0;
+        padding: 10px;
+    }
+
+    .extension-coming-soon {
+        margin-left: 0;
+    }
+
+    .extension-actions {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .extension-btn {
+        width: 100%;
+        max-width: 200px;
+    }
+
+    .extension-table {
+        max-width: 100%; /* Allow table to fit container on smaller screens */
+    }
+}

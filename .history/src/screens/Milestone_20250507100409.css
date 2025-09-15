@@ -1,0 +1,157 @@
+/* Color Variables */
+.milestone-page {
+    --milestone-primary-accent: #4a22fa;
+    --milestone-secondary-accent: #333333;
+    --milestone-text: #d3d3d3;
+    --milestone-heading: #ffffff;
+    --milestone-bg: #1a1a1a;
+    --milestone-bg-end: #111111;
+    --milestone-border: 1px solid #333333;
+    --milestone-input-bg: #2a2a2a;
+    --milestone-card-bg: #252525;
+    --milestone-icon-completed: #7b5efd;
+}
+
+/* Base Styles */
+.milestone-page {
+    min-height: 100vh;
+    background: linear-gradient(to bottom, var(--milestone-bg), var(--milestone-bg-end));
+    color: var(--milestone-text);
+    font-family: Arial, sans-serif;
+}
+
+.milestone-main {
+    margin-left: 60px;
+    padding: 20px;
+}
+
+.milestone-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.milestone-coming-soon {
+    margin-left: 60px;
+    padding: 20px;
+    color: var(--milestone-heading);
+    font-size: 18px;
+    text-align: center;
+}
+
+.milestone-page h1 {
+    color: var(--milestone-heading);
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.milestone-list-container {
+    max-width: 600px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.milestone-list-header {
+    display: flex;
+    background: var(--milestone-card-bg);
+    border-bottom: var(--milestone-border);
+    padding: 8px 5px;
+    font-weight: 500;
+    color: var(--milestone-heading);
+    border-radius: 5px 5px 0 0;
+    font-size: 13px;
+}
+
+.milestone-list-column {
+    flex: 1;
+    padding: 2px 5px;
+    text-align: left;
+}
+
+.milestone-list {
+    border-radius: 0 0 5px 5px;
+    overflow: hidden;
+}
+
+.milestone-card {
+    display: flex;
+    background: var(--milestone-input-bg);
+    border-bottom: var(--milestone-border);
+    padding: 8px 5px;
+    transition: background 0.3s ease;
+    font-size: 13px;
+    line-height: 1.4;
+}
+
+.milestone-card:hover {
+    background: #333333;
+}
+
+.milestone-card:last-child {
+    border-bottom: none;
+}
+
+.milestone-label-mobile {
+    display: none;
+    color: var(--milestone-heading);
+    font-weight: 500;
+    margin-bottom: 3px;
+    font-size: 12px;
+}
+
+.milestone-status {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.milestone-icon {
+    font-size: 16px;
+    color: var(--milestone-text);
+}
+
+.milestone-icon.completed {
+    color: var(--milestone-icon-completed);
+}
+
+@media (max-width: 768px) {
+    .milestone-main {
+        margin-left: 0;
+        padding: 10px;
+    }
+
+    .milestone-coming-soon {
+        margin-left: 0;
+    }
+
+    .milestone-list-container {
+        max-width: 100%;
+    }
+
+    .milestone-list-header {
+        display: none;
+    }
+
+    .milestone-card {
+        flex-direction: column;
+        padding: 10px;
+        border: var(--milestone-border);
+        border-radius: 5px;
+        margin-bottom: 8px;
+    }
+
+    .milestone-card:last-child {
+        margin-bottom: 0;
+        border-bottom: var(--milestone-border);
+    }
+
+    .milestone-list-column {
+        display: flex;
+        flex-direction: column;
+        padding: 3px 0;
+    }
+
+    .milestone-label-mobile {
+        display: block;
+    }
+}

@@ -1,0 +1,51 @@
+.account-page {
+    --account-primary-accent: #4a22fa;
+    --account-text: #d3d3d3;
+    --account-bg: #000000;
+  }
+  
+  .account-page {
+    display: flex;
+    min-height: 100vh;
+    background: radial-gradient(circle at center, #121212 0%, var(--account-bg) 100%);
+    color: var(--account-text);
+  }
+  
+  .account-page .account-main {
+    margin-left: 60px;
+    flex: 1;
+    padding: 10px;
+    transition: margin-left 0.3s ease;
+  }
+  
+  .account-page .account-main.sidebar-exp-pinned {
+    margin-left: 150px;
+  }
+  
+  .account-page .account-content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  @media (max-width: 768px) {
+    .account-page .account-main {
+      margin-left: 50px;
+      padding: 8px;
+    }
+  
+    .account-page .account-main.sidebar-exp-pinned {
+      margin-left: 130px;
+    }
+  }
+  
+  @media (max-width: 600px) {
+    .account-page .account-main {
+      margin-left: 0;
+      padding: 6px;
+    }
+  
+    .account-page .account-main.sidebar-exp-pinned {
+      margin-left: 0;
+    }
+  }

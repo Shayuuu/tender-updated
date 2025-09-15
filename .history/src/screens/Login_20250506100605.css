@@ -1,0 +1,328 @@
+/* Color Variables */
+.home-page {
+  --primary-accent: #4a22fa;
+  --secondary-accent: #333333;
+  --text: #d3d3d3;
+  --heading: #ffffff;
+  --bg: #000000;
+  --card-bg: #1a1a1a;
+  --border: 1px solid #333333;
+  --severity-low: #22bb33;
+  --severity-low-dark: #1a8c28;
+  --severity-medium: #ffaa00;
+  --severity-medium-dark: #cc8800;
+  --severity-high: #ff4444;
+  --severity-high-dark: #cc3333;
+}
+
+/* Resets and Base Styles */
+html, body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  width: 100%;
+  font-family: Arial, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Home Page Container */
+.home-page {
+  display: flex;
+  min-height: 100vh;
+  background: radial-gradient(circle at center, #121212 0%, #000000 100%);
+  color: var(--text);
+}
+
+/* Main Content Area */
+.home-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px;
+  margin-left: 60px;
+}
+
+/* Title */
+.home-title {
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--heading);
+  text-align: center;
+  margin: 5px 0 30px 0;
+}
+
+/* Home Card */
+.home-card {
+  background: var(--card-bg);
+  border-radius: 15px;
+  padding: 30px;
+  width: 100%;
+  max-width: 800px;
+  box-shadow: 0 2px 4px rgba(255, 255, 255, 0.05);
+}
+
+/* Alerts Section */
+.alerts-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+}
+
+.alerts-title {
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--heading);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.alerts-icon {
+  font-size: 20px;
+  color: var(--primary-accent);
+}
+
+/* Alerts Table */
+.alerts-table {
+  background: var(--card-bg);
+  border-radius: 15px;
+  padding: 15px;
+  width: 100%;
+  overflow-x: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #6B48FF #333333;
+}
+
+.alerts-table::-webkit-scrollbar {
+  height: 6px;
+}
+
+.alerts-table::-webkit-scrollbar-track {
+  background: #333333;
+  border-radius: 3px;
+}
+
+.alerts-table::-webkit-scrollbar-thumb {
+  background: #6B48FF;
+  border-radius: 3px;
+  border: 1px solid #333333;
+}
+
+.alerts-table::-webkit-scrollbar-thumb:hover {
+  background: #7c5bff;
+}
+
+.table-header {
+  display: flex;
+  padding: 5px 0;
+  min-width: 750px; /* Sum: 50+200+350+150 */
+  margin-bottom: 2px;
+}
+
+.table-row {
+  display: flex;
+  padding: 5px 0;
+  min-width: 750px;
+  background: var(--card-bg);
+  border-radius: 10px;
+  margin-bottom: 4px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.table-row:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+}
+
+.table-cell {
+  flex: 0 0 auto;
+  padding: 0 15px;
+  font-size: 13px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: left;
+  color: var(--text);
+  white-space: normal;
+  word-wrap: break-word;
+  text-align: left;
+}
+
+.table-header .table-cell {
+  font-weight: 700;
+  color: var(--heading);
+}
+
+.table-header .table-cell:nth-child(1),
+.table-row .table-cell:nth-child(1) {
+  flex: 0 0 50px;
+  min-width: 50px;
+}
+
+.table-header .table-cell:nth-child(2),
+.table-row .table-cell:nth-child(2) {
+  flex: 0 0 200px;
+  min-width: 200px;
+}
+
+.table-header .table-cell:nth-child(3),
+.table-row .table-cell:nth-child(3) {
+  flex: 0 0 350px;
+  min-width: 350px;
+}
+
+.table-header .table-cell:nth-child(4),
+.table-row .table-cell:nth-child(4) {
+  flex: 0 0 150px;
+  min-width: 150px;
+}
+
+.severity-badge {
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #ffffff;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease;
+}
+
+.severity-badge:hover {
+  transform: scale(1.05);
+}
+
+.severity-low {
+  background: linear-gradient(135deg, var(--severity-low) 0%, var(--severity-low-dark) 100%);
+}
+
+.severity-medium {
+  background: linear-gradient(135deg, var(--severity-medium) 0%, var(--severity-medium-dark) 100%);
+}
+
+.severity-high {
+  background: linear-gradient(135deg, var(--severity-high) 0%, var(--severity-high-dark) 100%);
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .home-content {
+      margin-left: 50px;
+  }
+
+  .alerts-table {
+      width: 100%;
+  }
+
+  .table-header,
+  .table-row {
+      min-width: 600px; /* Sum: 50+150+300+100 */
+  }
+
+  .table-cell {
+      padding: 0 12px;
+      font-size: 12px;
+  }
+
+  .table-header .table-cell:nth-child(1),
+  .table-row .table-cell:nth-child(1) {
+      flex: 0 0 50px;
+      min-width: 50px;
+  }
+
+  .table-header .table-cell:nth-child(2),
+  .table-row .table-cell:nth-child(2) {
+      flex: 0 0 150px;
+      min-width: 150px;
+  }
+
+  .table-header .table-cell:nth-child(3),
+  .table-row .table-cell:nth-child(3) {
+      flex: 0 0 300px;
+      min-width: 300px;
+  }
+
+  .table-header .table-cell:nth-child(4),
+  .table-row .table-cell:nth-child(4) {
+      flex: 0 0 100px;
+      min-width: 100px;
+  }
+
+  .severity-badge {
+      font-size: 12px;
+      padding: 4px 8px;
+  }
+}
+
+@media (max-width: 600px) {
+  .home-content {
+      padding: 20px;
+      margin-left: 0;
+  }
+
+  .home-card {
+      width: 95%;
+      padding: 20px;
+  }
+
+  .home-title {
+      font-size: 28px;
+  }
+
+  .alerts-title {
+      font-size: 20px;
+  }
+
+  .alerts-icon {
+      font-size: 18px;
+  }
+
+  .alerts-table {
+      width: 100%;
+  }
+
+  .table-header,
+  .table-row {
+      min-width: 450px; /* Sum: 40+120+200+90 */
+  }
+
+  .table-cell {
+      padding: 0 10px;
+      font-size: 11px;
+  }
+
+  .table-header .table-cell:nth-child(1),
+  .table-row .table-cell:nth-child(1) {
+      flex: 0 0 40px;
+      min-width: 40px;
+  }
+
+  .table-header .table-cell:nth-child(2),
+  .table-row .table-cell:nth-child(2) {
+      flex: 0 0 120px;
+      min-width: 120px;
+  }
+
+  .table-header .table-cell:nth-child(3),
+  .table-row .table-cell:nth-child(3) {
+      flex: 0 0 200px;
+      min-width: 200px;
+  }
+
+  .table-header .table-cell:nth-child(4),
+  .table-row .table-cell:nth-child(4) {
+      flex: 0 0 90px;
+      min-width: 90px;
+  }
+
+  .severity-badge {
+      font-size: 11px;
+      padding: 3px 6px;
+  }
+}

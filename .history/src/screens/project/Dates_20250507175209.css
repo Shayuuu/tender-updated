@@ -1,0 +1,51 @@
+.dates-page {
+    --dates-primary-accent: #4a22fa;
+    --dates-text: #d3d3d3;
+    --dates-bg: #000000;
+  }
+  
+  .dates-page {
+    display: flex;
+    min-height: 100vh;
+    background: radial-gradient(circle at center, #121212 0%, var(--dates-bg) 100%);
+    color: var(--dates-text);
+  }
+  
+  .dates-page .dates-main {
+    margin-left: 60px;
+    flex: 1;
+    padding: 10px;
+    transition: margin-left 0.3s ease;
+  }
+  
+  .dates-page .dates-main.sidebar-exp-pinned {
+    margin-left: 150px;
+  }
+  
+  .dates-page .dates-content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  @media (max-width: 768px) {
+    .dates-page .dates-main {
+      margin-left: 50px;
+      padding: 8px;
+    }
+  
+    .dates-page .dates-main.sidebar-exp-pinned {
+      margin-left: 130px;
+    }
+  }
+  
+  @media (max-width: 600px) {
+    .dates-page .dates-main {
+      margin-left: 0;
+      padding: 6px;
+    }
+  
+    .dates-page .dates-main.sidebar-exp-pinned {
+      margin-left: 0;
+    }
+  }

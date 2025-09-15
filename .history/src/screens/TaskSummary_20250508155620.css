@@ -1,0 +1,47 @@
+/* Color Variables */
+.bidder-summary-page {
+    --summary-primary-accent: #4a22fa;
+    --summary-secondary-accent: #333333;
+    --summary-text: #d3d3d3;
+    --summary-heading: #ffffff;
+    --summary-bg: #1a1a1a;
+    --summary-bg-end: #111111;
+}
+
+/* Base Styles */
+.bidder-summary-page {
+    min-height: 100vh;
+    background: linear-gradient(to bottom, var(--summary-bg), var(--summary-bg-end));
+    color: var(--summary-text);
+    font-family: Arial, sans-serif;
+}
+
+.bidder-summary-main {
+    margin-left: 60px;
+    padding: 20px;
+}
+
+.bidder-summary-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.bidder-summary-page h1 {
+    color: var(--summary-heading);
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.bidder-summary-coming-soon {
+    text-align: center;
+    font-size: 16px;
+    color: var(--summary-text);
+}
+
+@media (max-width: 600px) {
+    .bidder-summary-main {
+        margin-left: 0;
+        padding: 10px;
+    }
+}

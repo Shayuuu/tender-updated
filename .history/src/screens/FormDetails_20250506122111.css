@@ -1,0 +1,115 @@
+/* Color Variables */
+.form-details-page {
+  --form-details-primary-accent: #4a22fa;
+  --form-details-secondary-accent: #333333;
+  --form-details-text: #d3d3d3;
+  --form-details-heading: #ffffff;
+  --form-details-bg: #1a1a1a;
+  --form-details-bg-end: #111111;
+  --form-details-hover-bg: #4a22fa;
+  --form-details-active-bg: #333333;
+  --form-details-border: 1px solid #333333;
+  --form-details-btn-bg: #4a22fa;
+  --form-details-btn-hover-bg: #5a32ff;
+  --form-details-cancel-btn-bg: #ff4444;
+  --form-details-cancel-btn-hover-bg: #ff5555;
+  --form-details-input-bg: #2a2a2a;
+  --form-details-modal-bg: #222222;
+}
+
+/* Base Styles */
+.form-details-page {
+  margin-left: 60px; /* Match Sidebar width */
+  padding: 20px;
+  min-height: 100vh;
+  background: linear-gradient(to bottom, var(--form-details-bg), var(--form-details-bg-end));
+  color: var(--form-details-text);
+  font-family: Arial, sans-serif;
+}
+
+.form-details-page h1 {
+  color: var(--form-details-heading);
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+/* Actions */
+.form-details-actions {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.form-details-btn {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  color: var(--form-details-heading);
+  font-size: 14px;
+  transition: background 0.3s ease;
+}
+
+.form-details-edit-btn,
+.form-details-save-btn,
+.form-details-download-btn,
+.form-details-download-confirm-btn {
+  background: var(--form-details-btn-bg);
+}
+
+.form-details-edit-btn:hover,
+.form-details-save-btn:hover,
+.form-details-download-btn:hover,
+.form-details-download-confirm-btn:hover {
+  background: var(--form-details-btn-hover-bg);
+}
+
+.form-details-cancel-btn {
+  background: var(--form-details-cancel-btn-bg);
+}
+
+.form-details-cancel-btn:hover {
+  background: var(--form-details-cancel-btn-hover-bg);
+}
+
+/* Form Container */
+.form-details-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.form-details-column {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.form-details-field {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.form-details-field label {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--form-details-heading);
+}
+
+.form-details-field span {
+  font-size: 14px;
+  color: var(--form-details-text);
+}
+
+.form-details-field input,
+.form-details-field select,
+.form-details-field input[type="datetime-local"],
+.form-details-field input[type="date"] {
+  padding: 8px;
+  border: var(--form-details-border);
+  border-radius: 5px;
+  background: var(--form-details-input-bg);
+  color: var(--form-details-text);
+  font-size: 14px;
+}

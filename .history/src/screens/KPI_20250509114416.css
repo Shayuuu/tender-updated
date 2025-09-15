@@ -1,0 +1,282 @@
+/* Color Variables */
+.kpi-page {
+    --kpi-primary-accent: #4a22fa;
+    --kpi-secondary-accent: #333333;
+    --kpi-text: #d3d3d3;
+    --kpi-heading: #ffffff;
+    --kpi-bg: #000000;
+    --kpi-bg-end: #111111;
+    --kpi-border: 1px solid #333333;
+    --kpi-card-bg: #252525;
+    --kpi-input-bg: #2a2a2a;
+    --kpi-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    --kpi-tab-bg: #252525;
+    --kpi-tab-active-bg: #4a22fa;
+    --kpi-status-done: #28a745;
+    --kpi-status-in-progress: #ffc107;
+    --kpi-alert-overdue: #937aff;
+    --kpi-check-checked: #28a745;
+    --kpi-check-unchecked: #ff4444;
+  }
+  
+  /* Base Styles */
+  .kpi-page {
+    min-height: 100vh;
+    background: linear-gradient(to bottom, var(--kpi-bg), var(--kpi-bg-end));
+    color: var(--kpi-text);
+    font-family: Arial, sans-serif;
+  }
+  
+  .kpi-main {
+    margin-left: 60px;
+    padding: 20px;
+  }
+  
+  .kpi-content {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .kpi-content h1 {
+    color: var(--kpi-heading);
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  /* Tab-Style Slider (Adjusted Width and Position) */
+  .kpi-tabs {
+    display: inline-flex; /* Changed to inline-flex to shrink-wrap the content */
+    gap: 0;
+    background: var(--kpi-tab-bg);
+    border-radius: 5px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    justify-content: flex-start; /* Align to the left */
+  }
+  
+  .kpi-tab {
+    padding: 10px 20px;
+    border: none;
+    background: var(--kpi-tab-bg);
+    color: var(--kpi-text);
+    font-size: 14px;
+    cursor: pointer;
+    transition: background 0.3s ease, color 0.3s ease;
+  }
+  
+  .kpi-tab:hover {
+    background: var(--kpi-secondary-accent);
+  }
+  
+  .kpi-tab.active {
+    background: var(--kpi-tab-active-bg);
+    color: var(--kpi-heading);
+    font-weight: 500;
+  }
+  
+  /* KPI Section */
+  .kpi-section {
+    margin-bottom: 20px;
+  }
+  
+  .kpi-table-container {
+    max-width: 100%;
+    margin: 0 auto;
+    overflow-x: auto;
+  }
+  
+  .kpi-table-header {
+    display: flex;
+    background: var(--kpi-card-bg);
+    border: var(--kpi-border);
+    padding: 8px 5px;
+    font-weight: 500;
+    color: var(--kpi-heading);
+    border-radius: 5px 5px 0 0;
+    font-size: 13px;
+  }
+  
+  .kpi-table-column {
+    flex: 1;
+    padding: 2px 5px;
+    text-align: left;
+    min-width: 100px;
+  }
+  
+  /* Specific column widths for Project table */
+  .kpi-table-column.project-name {
+    flex: 0 0 120px;
+    min-width: 120px;
+  }
+  
+  .kpi-table-column.project-code {
+    flex: 0 0 100px;
+    min-width: 100px;
+  }
+  
+  .kpi-table-column.ed-column,
+  .kpi-table-column.fd-column,
+  .kpi-table-column.bg-column {
+    flex: 0 0 50px;
+    min-width: 50px;
+    text-align: center;
+  }
+  
+  .kpi-table-column.progress-column {
+    flex: 0 0 80px;
+    min-width: 80px;
+    text-align: center;
+  }
+  
+  .kpi-table-column.status-column {
+    flex: 0 0 100px;
+    min-width: 100px;
+  }
+  
+  .kpi-table-column.amount-column {
+    flex: 0 0 100px;
+    min-width: 100px;
+  }
+  
+  .kpi-table-body {
+    border-radius: 0 0 5px 5px;
+    overflow: hidden;
+    border: var(--kpi-border);
+    border-top: none;
+  }
+  
+  .kpi-empty {
+    padding: 10px;
+    text-align: center;
+    background: var(--kpi-input-bg);
+    color: var(--kpi-text);
+    font-size: 13px;
+  }
+  
+  .kpi-table-row {
+    display: flex;
+    background: var(--kpi-input-bg);
+    border-bottom: var(--kpi-border);
+    padding: 8px 5px;
+    transition: background 0.3s ease;
+    font-size: 13px;
+    line-height: 1.4;
+  }
+  
+  .kpi-table-row:hover {
+    background: #333333;
+  }
+  
+  .kpi-table-row:last-child {
+    border-bottom: none;
+  }
+  
+  .kpi-label-mobile {
+    display: none;
+    color: var(--kpi-heading);
+    font-weight: 500;
+    margin-bottom: 3px;
+    font-size: 12px;
+  }
+  
+  /* Simplified Checkmark Styling */
+  .kpi-check {
+    display: inline-block;
+    font-size: 14px;
+    font-weight: bold;
+  }
+  
+  .kpi-check.checked {
+    color: var(--kpi-check-checked);
+  }
+  
+  .kpi-check:not(.checked) {
+    color: var(--kpi-check-unchecked);
+  }
+  
+  /* Status and Alerts Styling */
+  .kpi-status.done {
+    color: var(--kpi-status-done);
+    font-weight: bold;
+  }
+  
+  .kpi-status.in-progress {
+    color: var(--kpi-status-in-progress);
+    font-weight: bold;
+  }
+  
+  .kpi-alert.overdue {
+    color: var(--kpi-alert-overdue);
+    font-weight: bold;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .kpi-main {
+      margin-left: 0;
+      padding: 10px;
+    }
+  
+    .kpi-table-header {
+      display: none;
+    }
+  
+    .kpi-table-body {
+      border: none;
+    }
+  
+    .kpi-empty {
+      border: var(--kpi-border);
+      border-radius: 5px;
+      margin-bottom: 8px;
+    }
+  
+    .kpi-table-row {
+      flex-direction: column;
+      padding: 10px;
+      border: var(--kpi-border);
+      border-radius: 5px;
+      margin-bottom: 8px;
+    }
+  
+    .kpi-table-row:last-child {
+      margin-bottom: 0;
+      border-bottom: var(--kpi-border);
+    }
+  
+    .kpi-table-column {
+      display: flex;
+      flex-direction: column;
+      padding: 3px 0;
+      min-width: unset;
+    }
+  
+    .kpi-table-column.project-name,
+    .kpi-table-column.project-code,
+    .kpi-table-column.ed-column,
+    .kpi-table-column.fd-column,
+    .kpi-table-column.bg-column,
+    .kpi-table-column.progress-column,
+    .kpi-table-column.status-column,
+    .kpi-table-column.amount-column {
+      flex: 1;
+      text-align: left;
+    }
+  
+    .kpi-label-mobile {
+      display: block;
+    }
+  
+    .kpi-tabs {
+      width: 100%;
+      justify-content: center;
+    }
+  
+    .kpi-tab {
+      flex: 1;
+      text-align: center;
+      padding: 8px 10px;
+      font-size: 13px;
+    }
+  }

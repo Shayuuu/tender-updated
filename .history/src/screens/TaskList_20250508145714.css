@@ -1,0 +1,243 @@
+/* Color Variables */
+.tasklist-page {
+    --tasklist-primary-accent: #4a22fa;
+    --tasklist-secondary-accent: #333333;
+    --tasklist-text: #d3d3d3;
+    --tasklist-heading: #ffffff;
+    --tasklist-bg: #1a1a1a;
+    --tasklist-bg-end: #111111;
+    --tasklist-border: 1px solid #333333;
+    --tasklist-btn-bg: #4a22fa;
+    --tasklist-btn-hover-bg: #5a32ff;
+    --tasklist-input-bg: #2a2a2a;
+    --tasklist-table-header-bg: #252525;
+    --tasklist-table-row-hover: #333333;
+    --tasklist-priority-high: #ff4444;
+    --tasklist-priority-medium: #ffbb33;
+    --tasklist-priority-low: #00C851;
+}
+
+/* Base Styles */
+.tasklist-page {
+    min-height: 100vh;
+    background: linear-gradient(to bottom, var(--tasklist-bg), var(--tasklist-bg-end));
+    color: var(--tasklist-text);
+    font-family: Arial, sans-serif;
+}
+
+.tasklist-main {
+    margin-left: 60px;
+    padding: 20px;
+}
+
+.tasklist-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.tasklist-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.tasklist-page h1 {
+    color: var(--tasklist-heading);
+    font-size: 24px;
+    text-align: left;
+}
+
+/* Task Summary Button */
+.tasklist-btn {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    color: var(--tasklist-heading);
+    font-size: 14px;
+    transition: background 0.3s ease;
+    min-width: 120px;
+    text-align: center;
+}
+
+.tasklist-summary-btn {
+    background: var(--tasklist-btn-bg);
+}
+
+.tasklist-summary-btn:hover {
+    background: var(--tasklist-btn-hover-bg);
+}
+
+/* Toggle Switch */
+.tasklist-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.tasklist-toggle-label {
+    color: var(--tasklist-text);
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
+.tasklist-toggle-label.active {
+    color: var(--tasklist-heading);
+    font-weight: 500;
+}
+
+.tasklist-switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 24px;
+}
+
+.tasklist-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.tasklist-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--tasklist-secondary-accent);
+    transition: 0.4s;
+    border-radius: 24px;
+}
+
+.tasklist-slider:before {
+    position: absolute;
+    content: "";
+    height: 20px;
+    width: 20px;
+    left: 2px;
+    bottom: 2px;
+    background-color: var(--tasklist-heading);
+    transition: 0.4s;
+    border-radius: 50%;
+}
+
+.tasklist-switch input:checked + .tasklist-slider {
+    background-color: var(--tasklist-primary-accent);
+}
+
+.tasklist-switch input:checked + .tasklist-slider:before {
+    transform: translateX(26px);
+}
+
+/* Table Styles */
+.tasklist-table-container {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.tasklist-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--tasklist-input-bg);
+    border: var(--tasklist-border);
+    border-radius: 5px;
+    font-size: 13px;
+}
+
+.tasklist-table th,
+.tasklist-table td {
+    padding: 10px 12px;
+    text-align: left;
+    border-bottom: var(--tasklist-border);
+}
+
+.tasklist-table th {
+    background: var(--tasklist-table-header-bg);
+    color: var(--tasklist-heading);
+    font-weight: 500;
+}
+
+.tasklist-table td {
+    color: var(--tasklist-text);
+}
+
+.tasklist-table tr:hover {
+    background: var(--tasklist-table-row-hover);
+}
+
+.tasklist-table tr:last-child td {
+    border-bottom: none;
+}
+
+/* Priority Styling */
+.priority-high {
+    color: var(--tasklist-priority-high);
+    font-weight: 500;
+}
+
+.priority-medium {
+    color: var(--tasklist-priority-medium);
+    font-weight: 500;
+}
+
+.priority-low {
+    color: var(--tasklist-priority-low);
+    font-weight: 500;
+}
+
+/* Empty State */
+.tasklist-empty {
+    text-align: center;
+    padding: 20px;
+    background: var(--tasklist-input-bg);
+    border: var(--tasklist-border);
+    border-radius: 5px;
+    font-size: 14px;
+    color: var(--tasklist-text);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .tasklist-main {
+        margin-left: 0;
+        padding: 10px;
+    }
+
+    .tasklist-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .tasklist-page h1 {
+        text-align: center;
+        font-size: 20px;
+    }
+
+    .tasklist-summary-btn {
+        width: 100%;
+        max-width: 200px;
+        align-self: center;
+    }
+
+    .tasklist-toggle {
+        gap: 8px;
+    }
+
+    .tasklist-toggle-label {
+        font-size: 14px;
+    }
+
+    .tasklist-table th,
+    .tasklist-table td {
+        padding: 8px 10px;
+        font-size: 12px;
+    }
+}

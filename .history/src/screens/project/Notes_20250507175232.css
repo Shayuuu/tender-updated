@@ -1,0 +1,51 @@
+.notes-page {
+    --notes-primary-accent: #4a22fa;
+    --notes-text: #d3d3d3;
+    --notes-bg: #000000;
+  }
+  
+  .notes-page {
+    display: flex;
+    min-height: 100vh;
+    background: radial-gradient(circle at center, #121212 0%, var(--notes-bg) 100%);
+    color: var(--notes-text);
+  }
+  
+  .notes-page .notes-main {
+    margin-left: 60px;
+    flex: 1;
+    padding: 10px;
+    transition: margin-left 0.3s ease;
+  }
+  
+  .notes-page .notes-main.sidebar-exp-pinned {
+    margin-left: 150px;
+  }
+  
+  .notes-page .notes-content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  @media (max-width: 768px) {
+    .notes-page .notes-main {
+      margin-left: 50px;
+      padding: 8px;
+    }
+  
+    .notes-page .notes-main.sidebar-exp-pinned {
+      margin-left: 130px;
+    }
+  }
+  
+  @media (max-width: 600px) {
+    .notes-page .notes-main {
+      margin-left: 0;
+      padding: 6px;
+    }
+  
+    .notes-page .notes-main.sidebar-exp-pinned {
+      margin-left: 0;
+    }
+  }

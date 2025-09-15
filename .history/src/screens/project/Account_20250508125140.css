@@ -1,0 +1,258 @@
+/* Color Variables */
+.account-page {
+  --account-primary-accent: #4a22fa;
+  --account-secondary-accent: #333333;
+  --account-text: #d3d3d3;
+  --account-heading: #ffffff;
+  --account-bg: #1a1a1a;
+  --account-bg-end: #111111;
+  --account-border: 1px solid #333333;
+  --account-btn-bg: #4a22fa;
+  --account-btn-hover-bg: #5a32ff;
+  --account-cancel-btn-bg: #ff4444;
+  --account-cancel-btn-hover-bg: #ff5555;
+  --account-input-bg: #2a2a2a;
+  --account-card-bg: #252525;
+  --account-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+/* Base Styles */
+.account-page {
+  min-height: 100vh;
+  background: linear-gradient(to bottom, var(--account-bg), var(--account-bg-end));
+  color: var(--account-text);
+  font-family: Arial, sans-serif;
+}
+
+.account-main {
+  margin-left: 60px;
+  padding: 20px;
+}
+
+.account-content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+
+/* Summary Section */
+.account-summary-section {
+  margin-bottom: 30px;
+}
+
+.account-summary-details {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.account-summary-field {
+  background: var(--account-card-bg);
+  border: var(--account-border);
+  border-radius: 8px;
+  padding: 15px;
+  box-shadow: var(--account-shadow);
+  min-width: 250px;
+  text-align: center;
+}
+
+.account-summary-field label {
+  color: var(--account-heading);
+  font-size: 16px;
+  font-weight: 500;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.account-data-box {
+  color: var(--account-text);
+  font-size: 16px;
+  font-weight: 400;
+}
+
+/* RA Bills Section */
+.account-bills-section {
+  margin-bottom: 20px;
+}
+
+.account-bills-list-container {
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.account-bills-list-header {
+  display: flex;
+  background: var(--account-card-bg);
+  border: var(--account-border);
+  padding: 8px 5px;
+  font-weight: 500;
+  color: var(--account-heading);
+  border-radius: 5px 5px 0 0;
+  font-size: 13px;
+}
+
+.account-bills-list-column {
+  flex: 1;
+  padding: 2px 5px;
+  text-align: left;
+}
+
+.account-bills-list {
+  border-radius: 0 0 5px 5px;
+  overflow: hidden;
+  border: var(--account-border);
+  border-top: none;
+}
+
+.account-bills-empty {
+  padding: 10px;
+  text-align: center;
+  background: var(--account-input-bg);
+  color: var(--account-text);
+  font-size: 13px;
+}
+
+.account-bills-card {
+  display: flex;
+  background: var(--account-input-bg);
+  border-bottom: var(--account-border);
+  padding: 8px 5px;
+  transition: background 0.3s ease;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.account-bills-card:hover {
+  background: #333333;
+}
+
+.account-bills-card:last-child {
+  border-bottom: none;
+}
+
+.account-bills-label-mobile {
+  display: none;
+  color: var(--account-heading);
+  font-weight: 500;
+  margin-bottom: 3px;
+  font-size: 12px;
+}
+
+.account-bills-input {
+  padding: 5px;
+  border: var(--account-border);
+  border-radius: 5px;
+  background: var(--account-input-bg);
+  color: var(--account-text);
+  font-size: 12px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.account-bills-input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(80%) sepia(10%) saturate(200%) hue-rotate(180deg) brightness(100%) contrast(90%);
+}
+
+.account-bills-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+  justify-content: center;
+}
+
+.account-bills-btn {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  color: var(--account-heading);
+  font-size: 14px;
+  transition: background 0.3s ease;
+  min-width: 120px;
+  text-align: center;
+}
+
+.account-bills-btn:disabled {
+  background: #666666;
+  cursor: not-allowed;
+}
+
+.account-bills-add-btn,
+.account-bills-edit-btn,
+.account-bills-save-btn {
+  background: var(--account-btn-bg);
+}
+
+.account-bills-add-btn:hover,
+.account-bills-edit-btn:hover,
+.account-bills-save-btn:hover {
+  background: var(--account-btn-hover-bg);
+}
+
+.account-bills-cancel-btn {
+  background: var(--account-cancel-btn-bg);
+}
+
+.account-bills-cancel-btn:hover {
+  background: var(--account-cancel-btn-hover-bg);
+}
+
+@media (max-width: 768px) {
+  .account-main {
+      margin-left: 0;
+      padding: 10px;
+  }
+
+  .account-summary-details {
+      flex-direction: column;
+      align-items: center;
+  }
+
+  .account-bills-list-header {
+      display: none;
+  }
+
+  .account-bills-list {
+      border: none;
+  }
+
+  .account-bills-empty {
+      border: var(--account-border);
+      border-radius: 5px;
+      margin-bottom: 8px;
+  }
+
+  .account-bills-card {
+      flex-direction: column;
+      padding: 10px;
+      border: var(--account-border);
+      border-radius: 5px;
+      margin-bottom: 8px;
+  }
+
+  .account-bills-card:last-child {
+      margin-bottom: 0;
+      border-bottom: var(--account-border);
+  }
+
+  .account-bills-list-column {
+      display: flex;
+      flex-direction: column;
+      padding: 3px 0;
+  }
+
+  .account-bills-label-mobile {
+      display: block;
+  }
+
+  .account-bills-actions {
+      flex-direction: column;
+      align-items: center;
+  }
+
+  .account-bills-btn {
+      width: 100%;
+      max-width: 200px;
+  }
+}
